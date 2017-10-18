@@ -6,4 +6,4 @@ build:
 
 test:
 	@echo ">> Run test"
-	docker run --rm -ti dockerizedphp/infection 2>/dev/null; true
+	docker run --rm -ti dockerizedphp/infection --help 2>/dev/null; true
