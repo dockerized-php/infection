@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dockerized-php/infection.svg?branch=master)](https://travis-ci.org/dockerized-php/infection)
 
-The image are based on [Alpine Linux](https://alpinelinux.org/) and built daily.
+The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 
 ## Supported tags
 
