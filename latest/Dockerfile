@@ -3,7 +3,7 @@ MAINTAINER Tommy Muehle <tommy.muehle@gmail.com>
 
 ARG VERSION=0.6.0
 
-RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community add \
+RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/community add \
     php7 \
     php7-xdebug \
     php7-openssl \
