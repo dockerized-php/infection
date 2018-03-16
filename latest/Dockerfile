@@ -1,7 +1,7 @@
 FROM alpine:3.6
 MAINTAINER Tommy Muehle <tommy.muehle@gmail.com>
 
-ARG VERSION=0.7.1
+ARG VERSION=0.8.1
 
 RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/community add \
     php7 \
