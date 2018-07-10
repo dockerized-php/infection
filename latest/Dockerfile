@@ -1,9 +1,9 @@
-FROM alpine:3.6
+FROM alpine:3.7
 MAINTAINER Tommy Muehle <tommy.muehle@gmail.com>
 
-ARG VERSION=0.8.1
+ARG VERSION=0.9.0
 
-RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.6/community add \
+RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/community add \
     php7 \
     php7-xdebug \
     php7-openssl \
@@ -15,7 +15,8 @@ RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.or
     php7-tokenizer \
     php7-dom \
     php7-xml \
-    php7-xmlwriter
+    php7-xmlwriter \
+    php7-simplexml
 
 ADD https://github.com/infection/infection/releases/download/${VERSION}/infection.phar /usr/local/bin/infection
 ADD https://github.com/infection/infection/releases/download/${VERSION}/infection.phar.pubkey /usr/local/bin/infection.pubkey

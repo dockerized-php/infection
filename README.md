@@ -32,3 +32,9 @@ git clone https://github.com/dockerized-php/infection.git
 cd infection
 docker build --build-arg VERSION=0.5.0 -t dockerizedphp/infection latest/
 ```
+
+You can also change some Xdebug settings as in the following command:
+
+```
+docker run --rm -ti -v $PWD:/app --entrypoint=php dockerizedphp/infection -d xdebug.idekey=PHPSTORM /usr/local/bin/infection --version
+```
