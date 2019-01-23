@@ -6,4 +6,4 @@ build:
 
 test:
 	@echo ">> Run test"
-	docker run --rm -ti dockerizedphp/infection --version
+	docker run --rm -i dockerizedphp/infection --version

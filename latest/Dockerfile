@@ -1,9 +1,8 @@
-FROM alpine:3.7
+FROM alpine:3.8
 MAINTAINER Tommy Muehle <tommy.muehle@gmail.com>
 
-ARG VERSION=0.9.0
-
-RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.7/community add \
+RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.8/community add \
+    curl \
     php7 \
     php7-xdebug \
     php7-openssl \
@@ -18,8 +17,11 @@ RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.or
     php7-xmlwriter \
     php7-simplexml
 
-ADD https://github.com/infection/infection/releases/download/${VERSION}/infection.phar /usr/local/bin/infection
-ADD https://github.com/infection/infection/releases/download/${VERSION}/infection.phar.pubkey /usr/local/bin/infection.pubkey
+RUN echo export LATEST_VERSION=$(curl -s https://api.github.com/repos/infection/infection/releases/latest |grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') >> $HOME/.profile \
+    && . $HOME/.profile \
+    && echo $LATEST_VERSION \
+    && curl -L -so /usr/local/bin/infection https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar \
+    && curl -L -so /usr/local/bin/infection.pubkey https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar.pubkey
 
 RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini \
   && chmod +x /usr/local/bin/infection \
