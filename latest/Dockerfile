@@ -17,9 +17,8 @@ RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.or
     php7-xmlwriter \
     php7-simplexml
 
-RUN echo export LATEST_VERSION=$(curl -s https://api.github.com/repos/infection/infection/releases/latest |grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') >> $HOME/.profile \
-    && . $HOME/.profile \
-    && echo $LATEST_VERSION \
+RUN export LATEST_VERSION=$(curl -s https://api.github.com/repos/infection/infection/releases/latest |grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') \
+    && echo "Latest version is:" $LATEST_VERSION \
     && curl -L -so /usr/local/bin/infection https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar \
     && curl -L -so /usr/local/bin/infection.pubkey https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar.pubkey
 
