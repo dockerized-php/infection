@@ -3,6 +3,7 @@ MAINTAINER Tommy Muehle <tommy.muehle@gmail.com>
 
 RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.8/community add \
     curl \
+    gnupg \
     php7 \
     php7-xdebug \
     php7-openssl \
@@ -20,7 +21,9 @@ RUN apk --update --progress --no-cache --repository http://dl-cdn.alpinelinux.or
 RUN export LATEST_VERSION=$(curl -s https://api.github.com/repos/infection/infection/releases/latest |grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') \
     && echo "Latest version is:" $LATEST_VERSION \
     && curl -L -so /usr/local/bin/infection https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar \
-    && curl -L -so /usr/local/bin/infection.pubkey https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar.pubkey
+    && curl -L -so /usr/local/bin/infection.asc https://github.com/infection/infection/releases/download/${LATEST_VERSION}/infection.phar.asc \
+    && gpg --keyserver hkps.pool.sks-keyservers.net --recv-keys 493B4AA0 \
+    && gpg --with-fingerprint --verify /usr/local/bin/infection.asc /usr/local/bin/infection
 
 RUN echo "zend_extension=xdebug.so" > /etc/php7/conf.d/xdebug.ini \
   && chmod +x /usr/local/bin/infection \
