@@ -1,6 +1,9 @@
 # Docker image for [infection](https://github.com/infection/infection)
 
 [![Build Status](https://travis-ci.org/dockerized-php/infection.svg?branch=master)](https://travis-ci.org/dockerized-php/infection)
+[![Docker Build](https://img.shields.io/docker/build/dockerizedphp/infection.svg)](https://hub.docker.com/r/dockerizedphp/infection)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dockerizedphp/infection.svg)](https://hub.docker.com/r/dockerizedphp/infection)
+[![](https://images.microbadger.com/badges/image/dockerizedphp/infection.svg)](https://microbadger.com/images/dockerizedphp/infection)
 
 The image is based on [Alpine Linux](https://alpinelinux.org/) and built daily.
 
